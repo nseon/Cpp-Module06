@@ -6,11 +6,11 @@
 #    By: nseon <nseon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 10:54:16 by nseon             #+#    #+#              #
-#    Updated: 2026/01/15 10:05:42 by nseon            ###   ########.fr        #
+#    Updated: 2026/01/15 15:24:04 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=	serialization
+NAME 		=	realType
 
 # ---------------FILES--------------- #
 
@@ -25,7 +25,10 @@ DEP			=	$(patsubst %.cpp, $(MAKE_DIR)%.d, $(SRC))
 # ---------------MAIN---------------- #
 
 SRC			=	main.cpp \
-				Serializer.cpp \
+				Base.cpp \
+				A.cpp \
+				B.cpp \
+				C.cpp \
 
 # --------------INCLUDES------------- #
 
@@ -35,7 +38,7 @@ INCLUDES	=	$(INCS_DIR)
 # --------------CONFIGS-------------- #
 
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -Weverything -Wno-suggest-override -Wno-suggest-destructor-override -Wno-padded -Wno-address-of-temporary
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -Weverything -Wno-suggest-override -Wno-suggest-destructor-override -Wno-padded -Wno-address-of-temporary -Wno-unused-value
 CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 # --------------TARGETS-------------- #
