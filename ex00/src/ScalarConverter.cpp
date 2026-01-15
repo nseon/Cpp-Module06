@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:49:56 by nseon             #+#    #+#             */
-/*   Updated: 2026/01/14 14:58:34 by nseon            ###   ########.fr       */
+/*   Updated: 2026/01/15 09:55:39 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &)
 ScalarConverter::~ScalarConverter()
 {}
 
-void ScalarConverter::convert(std::string input)
+void ScalarConverter::convert(std::string const &input)
 {
 	int res = detectType(input);
 	std::stringstream ss(input);

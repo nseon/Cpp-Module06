@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:34:11 by nseon             #+#    #+#             */
-/*   Updated: 2026/01/14 15:02:51 by nseon            ###   ########.fr       */
+/*   Updated: 2026/01/15 09:55:29 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include "ScalarConverter.hpp"
 #include "parse.hpp"
+#include "print.hpp"
 
 /*=========================================*/
 /*================= NONE ==================*/
@@ -30,7 +31,7 @@ void print_none()
 /*============== PRINT_TYPE ===============*/
 /*=========================================*/
 
-static void print_char(std::string input, int i)
+static void print_char(std::string const &input, int i)
 {
 	char c = static_cast<char>(i);
 	
@@ -44,7 +45,7 @@ static void print_char(std::string input, int i)
 	std::cout << std::endl;
 }
 
-static void print_int(std::string input, int i)
+static void print_int(std::string const &input, int i)
 {	
 	std::cout << "int: ";
 	if (isNanOrInff(input))
@@ -54,7 +55,7 @@ static void print_int(std::string input, int i)
 	std::cout << std::endl;
 }
 
-static void print_float(std::string input, float f)
+static void print_float(std::string const &input, float f)
 {
 	std::cout << "float: ";
 	if (input == "-inff" || input == "-inf")
@@ -68,7 +69,7 @@ static void print_float(std::string input, float f)
 	std::cout << 'f' << std::endl;
 }
 
-static void print_double(std::string input, double d)
+static void print_double(std::string const &input, double d)
 {
 	std::cout << "double: ";
 	if (input == "-inff" || input == "-inf")
@@ -86,7 +87,7 @@ static void print_double(std::string input, double d)
 /*============== PRINT_FROM_TYPE ===============*/
 /*==============================================*/
 
-void print_from_char(std::string input, char c)
+void print_from_char(std::string const &input, char c)
 {
 	int i = static_cast<int>(c);
 	
@@ -96,7 +97,7 @@ void print_from_char(std::string input, char c)
 	print_double(input, static_cast<double>(i));
 }
 
-void print_from_int(std::string input, int i)
+void print_from_int(std::string const &input, int i)
 {
 	if (std::numeric_limits<char>::min() <= i && i <= std::numeric_limits<char>::max())
 		print_char(input, i);
@@ -107,7 +108,7 @@ void print_from_int(std::string input, int i)
 	print_double(input, static_cast<double>(i));
 }
 
-void print_from_float(std::string input, float f)
+void print_from_float(std::string const &input, float f)
 {
 	int i = static_cast<int>(f);
 	
@@ -115,7 +116,7 @@ void print_from_float(std::string input, float f)
 		print_char(input, i);
 	else
 		std::cout << "char: Impossible (Overflow)" << std::endl;
-	if (std::numeric_limits<int>::min() <= f && f <= std::numeric_limits<int>::max())
+	if (static_cast<float>(std::numeric_limits<int>::min()) <= f && f <= static_cast<float>(std::numeric_limits<int>::max()))
 		print_int(input, i);
 	else
 		std::cout << "int: Impossible (Overflow)" << std::endl;
@@ -123,7 +124,7 @@ void print_from_float(std::string input, float f)
 	print_double(input, static_cast<double>(f));
 }
 
-void print_from_double(std::string input, double d)
+void print_from_double(std::string const &input, double d)
 {	
 	int i = static_cast<int>(d);
 
@@ -135,7 +136,7 @@ void print_from_double(std::string input, double d)
 		print_int(input, i);
 	else
 		std::cout << "int: Impossible (Overflow)" << std::endl;
-	if ((std::numeric_limits<float>::min() <= d && d <= std::numeric_limits<float>::max()) || isNanOrInff(input))
+	if ((static_cast<double>(std::numeric_limits<float>::min()) <= d && d <= static_cast<double>(std::numeric_limits<float>::max())) || isNanOrInff(input))
 		print_float(input, static_cast<float>(d));
 	else
 		std::cout << "float: Impossible (Overflow)" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 10:39:48 by nseon             #+#    #+#             */
-/*   Updated: 2026/01/07 17:32:08 by nseon            ###   ########.fr       */
+/*   Updated: 2026/01/15 09:55:58 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ class ScalarConverter {
 		ScalarConverter &operator=(ScalarConverter const &m);
 		~ScalarConverter();
 	public:
-		static void convert(std::string input);
+		static void convert(std::string const &input);
 };

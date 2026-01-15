@@ -6,16 +6,17 @@
 /*   By: nseon <nseon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 17:30:45 by nseon             #+#    #+#             */
-/*   Updated: 2026/01/14 14:55:25 by nseon            ###   ########.fr       */
+/*   Updated: 2026/01/15 09:54:30 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 
 #include "ScalarConverter.hpp"
+#include "parse.hpp"
 
 // FPL stand for Float Pseudo Literals
-static bool isFPL(std::string input)
+static bool isFPL(std::string const &input)
 {
 	if (input == "-inff" || input == "+inff" || input == "nanf")
 		return (true);
@@ -23,14 +24,14 @@ static bool isFPL(std::string input)
 }
 
 // DPL stand for Double Pseudo Literals
-static bool isDPL(std::string input)
+static bool isDPL(std::string const &input)
 {
 	if (input == "-inf" || input == "+inf" || input == "nan")
 		return (true);
 	return (false);
 }
 
-int detectType(std::string input)
+int detectType(std::string const &input)
 {
 	size_t i;
 
@@ -52,7 +53,7 @@ int detectType(std::string input)
 	return (NONE);
 }
 
-bool isNanOrInff(std::string input)
+bool isNanOrInff(std::string const &input)
 {
 	if (input == "-inff" || input == "-inf" || input == "+inff" || input == "+inf" || input == "nanf" || input == "nan")
 		return (1);

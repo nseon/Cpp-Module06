@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 10:54:16 by nseon             #+#    #+#              #
-#    Updated: 2026/01/14 15:57:49 by nseon            ###   ########.fr        #
+#    Updated: 2026/01/15 09:46:30 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ INCLUDES	=	$(INCS_DIR)
 # --------------CONFIGS-------------- #
 
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -Weverything -Wno-suggest-override -Wno-suggest-destructor-override -Wno-padded -Wno-address-of-temporary
 CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 # --------------TARGETS-------------- #
